@@ -32,10 +32,10 @@
         I said,<br/>
         Something wrong, now I long for yesterday.<br/>
         <p>
-            Released: <fmt:formatDate value="${releaseDate}" type="date" dateStyle="default"/>
+            Released: <fmt:formatDate value="${releaseDate}" type="date" dateStyle="medium"/>
         </p>
         <c:if test="${!empty members}">
-            <table border>
+            <table ${bean.border ? "border" : ""}>
                 <tr><th>The Beatles</th></tr>
                 <c:forEach var="member" items="${members}">
                     <tr><td>${member}</td></tr>

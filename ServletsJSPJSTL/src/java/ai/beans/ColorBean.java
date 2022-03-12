@@ -12,6 +12,7 @@ public class ColorBean {
 
     private String foregroundColor;
     private String backgroundColor;
+    private Boolean border;
 
     public ColorBean() {
     }
@@ -44,4 +45,17 @@ public class ColorBean {
         this.backgroundColor = backgroundColor;
     }
 
+    /**
+     * @return the border
+     */
+    public Boolean getBorder() {
+        return border;
+    }
+
+    /**
+     * @param border the border to set
+     */
+    public void setBorder(Boolean border) {
+        this.border = border;
+    }
 }
