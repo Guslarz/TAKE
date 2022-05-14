@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\MvcNews",
+    "\\MvcNews\\MvcNews",
+    "\\MvcNews\\MvcNews\\wwwroot\\css",
+    "\\MvcNews\\MvcNews\\wwwroot\\js",
+    "\\MvcNews\\MvcNews\\wwwroot\\lib\\jquery",
+    "\\MvcNews\\MvcNews\\wwwroot\\lib\\jquery-validation",
+    "\\MvcNews\\MvcNews\\wwwroot\\lib\\jquery-validation\\dist",
+    "\\MvcNews\\MvcNews\\wwwroot\\lib\\jquery\\dist"
+  ],
+  "SelectedNode": "\\MvcNews\\MvcNews\\MvcNews.csproj",
+  "PreviewInSolutionExplorer": false
+}
