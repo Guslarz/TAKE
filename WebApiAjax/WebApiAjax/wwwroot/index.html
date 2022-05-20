@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#calc").click(function () {
+                var x = $("#x").val();
+                var y = $("#y").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/math",
+                    data: {
+                        x: x,
+                        y: y
+                    }
+                }).done(function (response) {
+                    for (var key in response) {
+                        $("#" + key).text(response[key]);
+                    }
+                });
+            });
+        });
+    </script>
+    <div>
+        <h1>Calculations</h1>
+        <form>
+            x = <input type="text" id="x" />
+            y = <input type="text" id="y" />
+            <input type="button" id="calc" value="Call API (jQuery)" />
+            <input type="button" id="calcJs" value="Call API (vanilla JS)" />
+        </form>
+        x + y = <span id="sum"></span><br />
+        x - y = <span id="difference"></span><br />
+        x * y = <span id="product"></span><br />
+        x / y = <span id="quotient"></span><br />
+    </div>
+    <script>
+        document.getElementById('calcJs').addEventListener('click', function () {
+            const paramNames = ['x', 'y'];
+            const params = paramNames
+                .map(name => [name, document.getElementById(name).value])
+                .map(params => params.join('='));
+            const queryString = params.join('&');
+            const url = "/math?" + queryString;
+
+            let xhr;
+            if (window.XMLHttpRequest) {
+                // Mozilla, Safari, Opera ...
+                xhr = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                // old Internet Explorer
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhr.open("GET", url);            xhr.setRequestHeader('Accept', 'application/json'); 
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    const json = JSON.parse(xhr.responseText);
+                    for (var key in json) {
+                        document.getElementById(key).innerText = json[key];
+                    }
+                }
+                return true;
+            };
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
